@@ -7,10 +7,10 @@ export const HeaderContainer = styled.header`
   padding: 24px;
   border-radius: 16px;
   margin-bottom: 80px;
-  background-color: ${colors.cinza};
+  background-color: ${colors.grey};
 
   a {
-    color: ${colors.branca};
+    color: ${colors.white};
     font-weight: bold;
   }
 
