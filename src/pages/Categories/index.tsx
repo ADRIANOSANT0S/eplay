@@ -1,96 +1,50 @@
+import { useEffect, useState } from 'react'
+
 import ProductLIsta from '../../components/ProductList'
-import Game from '../../models/Game'
+import { Game } from '../Home'
 
-import resident from '../../assets/images/resident.png'
-import star_wars from '../../assets/images/star_wars.png'
-import zelda from '../../assets/images/zelda.png'
-import diablo from '../../assets/images/diablo.png'
+const Categories = () => {
+  const [gamesActio, setGamesAction] = useState<Game[]>([])
+  const [gamesSport, setGamesSport] = useState<Game[]>([])
+  const [gamesSimulation, setGamesSimulation] = useState<Game[]>([])
+  const [gamesLuta, setGamesLuta] = useState<Game[]>([])
+  const [gamesRPG, setGamesRPG] = useState<Game[]>([])
 
-const sales: Game[] = [
-  {
-    id: 1,
-    category: 'Ação',
-    description: 'l0renalk nfaçlknasdfkj andfffaçdfn erna fçasdnfçaksjdhfpouir',
-    title: 'Residente Evil 4',
-    image: resident,
-    infos: ['5%', 'R$ 290,00'],
-    system: 'PS5'
-  },
-  {
-    id: 2,
-    category: 'Ação',
-    description: 'l0renalk nfaçlknasdfkj andfffaçdfn erna fçasdnfçaksjdhfpouir',
-    title: 'Residente Evil 4',
-    image: star_wars,
-    infos: ['10%', 'R$ 250,00'],
-    system: 'windows'
-  },
-  {
-    id: 3,
-    category: 'Ação',
-    description: 'l0renalk nfaçlknasdfkj andfffaçdfn erna fçasdnfçaksjdhfpouir',
-    title: 'Residente Evil 4',
-    image: zelda,
-    infos: ['10%', 'R$ 250,00'],
-    system: 'windows'
-  },
-  {
-    id: 4,
-    category: 'Ação',
-    description: 'l0renalk nfaçlknasdfkj andfffaçdfn erna fçasdnfçaksjdhfpouir',
-    title: 'Residente Evil 4',
-    image: diablo,
-    infos: ['10%', 'R$ 250,00'],
-    system: 'windows'
-  }
-]
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/acao')
+      .then((res) => res.json())
+      .then((res) => setGamesAction(res))
 
-const soon: Game[] = [
-  {
-    id: 5,
-    category: 'RPG',
-    description: 'nfasçlkfn asldkfnasdçlkf qajeofkhnas f, açfknjas df',
-    infos: ['17/07/2024'],
-    title: 'Diablo 4',
-    system: 'PS4',
-    image: diablo
-  },
-  {
-    id: 6,
-    category: 'RPG',
-    description: 'nfasçlkfn asldkfnasdçlkf qajeofkhnas f, açfknjas df',
-    infos: ['17/07/2024'],
-    title: 'Zelda',
-    system: 'PS4',
-    image: zelda
-  },
-  {
-    id: 7,
-    category: 'RPG',
-    description: 'nfasçlkfn asldkfnasdçlkf qajeofkhnas f, açfknjas df',
-    infos: ['17/07/2024'],
-    title: 'StarWars',
-    system: 'PS4',
-    image: star_wars
-  },
-  {
-    id: 8,
-    category: 'RPG',
-    description: 'nfasçlkfn asldkfnasdçlkf qajeofkhnas f, açfknjas df',
-    infos: ['17/07/2024'],
-    title: 'Residente',
-    system: 'Nintendo Switch',
-    image: resident
-  }
-]
+    fetch('https://fake-api-tau.vercel.app/api/eplay/esportes')
+      .then((res) => res.json())
+      .then((res) => setGamesSport(res))
 
-const Categories = () => (
-  <>
-    <ProductLIsta title="RPG" background="gray" games={sales} />
-    <ProductLIsta title="Ação" background="black" games={soon} />
-    <ProductLIsta title="Aventura" background="gray" games={sales} />
-    <ProductLIsta title="RPS" background="black" games={soon} />
-  </>
-)
+    fetch('https://fake-api-tau.vercel.app/api/eplay/simulacao')
+      .then((res) => res.json())
+      .then((res) => setGamesSimulation(res))
+
+    fetch('https://fake-api-tau.vercel.app/api/eplay/luta')
+      .then((res) => res.json())
+      .then((res) => setGamesLuta(res))
+
+    fetch('https://fake-api-tau.vercel.app/api/eplay/rpg')
+      .then((res) => res.json())
+      .then((res) => setGamesRPG(res))
+  }, [])
+
+  return (
+    <>
+      <ProductLIsta title="Ação" background="black" games={gamesActio} />
+      <ProductLIsta title="Esportes" background="gray" games={gamesSport} />
+      <ProductLIsta title="Luta" background="black" games={gamesLuta} />
+      <ProductLIsta title="RPG" background="gray" games={gamesRPG} />
+      <ProductLIsta
+        title="Simulação"
+        background="black"
+        games={gamesSimulation}
+      />
+    </>
+  )
+}
 
 export default Categories
