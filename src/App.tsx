@@ -7,6 +7,7 @@ import Rotas from './routes'
 import { GlobalStyles } from './styles'
 import Footer from './components/Footer'
 import { store } from './store'
+import Card from './components/Card'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         </div>
         <Rotas />
         <Footer />
+        <Card />
       </BrowserRouter>
     </Provider>
   )

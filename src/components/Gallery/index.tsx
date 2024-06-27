@@ -5,8 +5,6 @@ import { GalleryItem } from '../../pages/Home'
 
 import { Items, Item, Action, Modal, ModalContainer } from './styles'
 
-import spiderman from '../../assets/images/banner-homem-aranha.png'
-import resident from '../../assets/images/details/resident.png'
 import zoom from '../../assets/images/details/zoom.png'
 import play from '../../assets/images/details/play.png'
 import flechar from '../../assets/images/details/fechar.png'

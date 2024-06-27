@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -18,6 +18,9 @@ export const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
   }
+  @media screen and (max-width: ${breakpoints.tablet}) {
+    display: none;
+  }
 `
 
 export const Links = styled.ul`
@@ -28,7 +31,7 @@ export const Links = styled.ul`
 export const LinksItem = styled.li`
   margin-right: 16px;
 `
-export const LinkCart = styled.a`
+export const CardButton = styled.a`
   display: flex;
   align-items: center;
 
