@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Game } from '../../pages/Home/index'
+import { clear } from 'console'
 
 type CardState = {
   items: Game[]
@@ -31,9 +31,12 @@ const cardSlice = createSlice({
     },
     close: (state) => {
       state.isOpen = false
+    },
+    clean: (state) => {
+      state.items = []
     }
   }
 })
 
-export const { add, open, close, remove } = cardSlice.actions
+export const { add, open, close, remove, clean } = cardSlice.actions
 export default cardSlice.reducer

@@ -1,60 +1,31 @@
 import Banner from '../../components/Banner'
 import ProductLIsta from '../../components/ProductList'
 
-import { useGetOnSaleQuery, useGetSoonQuery } from '../../sevices/api'
-export interface GalleryItem {
-  type: 'image' | 'video'
-  url: string
-}
-
-export type Game = {
-  id: number
-  name: string
-  description: string
-  release_date?: string
-  prices: {
-    discount?: number
-    old?: number
-    current?: number
-  }
-  details: {
-    category: string
-    system: string
-    developer: string
-    publisher: string
-    languages: string[]
-  }
-  media: {
-    thumbnail: string
-    cover: string
-    gallery: GalleryItem[]
-  }
-}
+import { useGetOnSaleQuery, useGetSoonQuery } from '../../services/api'
 
 const Home = () => {
-  const { data: onSaleGames } = useGetOnSaleQuery()
-  const { data: soonGames } = useGetSoonQuery()
+  const { data: onSaleGames, isLoading: isLoadingSale } = useGetOnSaleQuery()
+  const { data: soonGames, isLoading: isLoadingSoon } = useGetSoonQuery()
 
-  if (onSaleGames && soonGames) {
-    return (
-      <>
-        <Banner />
-        <ProductLIsta
-          title="Promoções"
-          background="gray"
-          games={onSaleGames}
-          id="on-sale"
-        />
-        <ProductLIsta
-          title="Em breve"
-          background="black"
-          games={soonGames}
-          id="coming-soon"
-        />
-      </>
-    )
-  }
-  return <h4>Carregando...</h4>
+  return (
+    <>
+      <Banner />
+      <ProductLIsta
+        title="Promoções"
+        background="gray"
+        games={onSaleGames}
+        id="on-sale"
+        isLoading={isLoadingSale}
+      />
+      <ProductLIsta
+        title="Em breve"
+        background="black"
+        games={soonGames}
+        id="coming-soon"
+        isLoading={isLoadingSoon}
+      />
+    </>
+  )
 }
 
 export default Home

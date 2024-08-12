@@ -7,7 +7,7 @@ import Rotas from './routes'
 import { GlobalStyles } from './styles'
 import Footer from './components/Footer'
 import { store } from './store'
-import Card from './components/Card'
+import Card from './components/Cart'
 
 function App() {
   return (

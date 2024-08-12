@@ -5,7 +5,9 @@ import styled from 'styled-components'
 import { Props } from '.'
 import { Card } from '../Product/styles'
 
-export const Container = styled.section<Omit<Props, 'title' | 'games'>>`
+export const Container = styled.section<
+  Omit<Props, 'title' | 'games' | 'isLoading'>
+>`
   padding: 32px 0;
   background-color: ${(prop) =>
     prop.background === 'gray' ? colors.grey : colors.black};
